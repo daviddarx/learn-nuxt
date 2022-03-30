@@ -1,11 +1,16 @@
 <template>
     <main class="container">
-        <h1>Hi, this is my app</h1>
+        <AppHeader />
     </main>
 </template>
 
 <script>
+import AppHeader from '@/components/AppHeader.vue'
+
 export default {
     name: 'IndexPage',
+    components: {
+        AppHeader,
+    },
 }
 </script>
