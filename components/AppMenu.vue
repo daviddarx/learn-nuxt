@@ -1,7 +1,9 @@
 <template>
     <nav>
         <ul>
-            <li><nuxt-link exact to="/">Homepage</nuxt-link></li>
+            <li>
+                <nuxt-link exact to="/"><AppLogo /></nuxt-link>
+            </li>
             <li><nuxt-link to="/restaurants">Restaurants</nuxt-link></li>
         </ul>
         <nuxt-link to="/cart">Cart</nuxt-link>
@@ -9,8 +11,13 @@
 </template>
 
 <script>
+import AppLogo from '@/components/AppLogo.vue'
+
 export default {
     name: 'AppMenu',
+    components: {
+        AppLogo,
+    },
 }
 </script>
 
