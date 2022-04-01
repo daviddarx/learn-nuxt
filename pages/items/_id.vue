@@ -12,7 +12,7 @@
 
             <div class="quantity">
                 <input v-model="count" type="number" min="1" />
-                <button class="primary">
+                <button class="primary" @click="addToCart">
                     Add to Cart - ${{ combinedPrice }}
                 </button>
             </div>
@@ -48,6 +48,11 @@
                     <label :for="addon">{{ addon }}</label>
                 </div>
             </fieldset>
+
+            <AppToast v-if="cartSubmitted">
+                Order submitted<br />Check out more
+                <nuxt-link to="/restaurants">Restaurants</nuxt-link>
+            </AppToast>
         </section>
 
         <section class="options">
@@ -59,8 +64,12 @@
 
 <script>
 import { mapState } from 'vuex'
+import AppToast from '@/components/AppToast.vue'
 
 export default {
+    components: {
+        AppToast,
+    },
     data() {
         return {
             id: this.$route.params.id,
@@ -68,6 +77,7 @@ export default {
             itemOptions: '',
             itemAddons: [],
             itemSizeAndCost: [],
+            cartSubmitted: false,
         }
     },
     computed: {
@@ -89,6 +99,11 @@ export default {
         combinedPrice() {
             const total = this.count * this.restaurantInfo.price
             return total.toFixed(2)
+        },
+    },
+    methods: {
+        addToCart() {
+            this.cartSubmitted = true
         },
     },
 }
