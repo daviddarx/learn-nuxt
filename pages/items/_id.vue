@@ -103,6 +103,16 @@ export default {
     },
     methods: {
         addToCart() {
+            const formOutPut = {
+                item: this.currentItem.item,
+                count: this.count,
+                options: this.itemOptions,
+                addOns: this.itemAddons,
+                combinedPrice: this.combinedPrice,
+            }
+
+            this.$store.commit('addToCart', formOutPut)
+
             this.cartSubmitted = true
         },
     },
