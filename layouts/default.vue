@@ -4,15 +4,18 @@
             <AppMenu />
             <Nuxt />
         </div>
+        <AppFooter />
     </div>
 </template>
 
 <script>
-import AppMenu from '@/components/AppMenu' // do not write the .vue to avoid error
+import AppMenu from '@/components/AppMenu.vue' // do not write the .vue to avoid error
+import AppFooter from '@/components/AppFooter'
 
 export default {
     components: {
         AppMenu,
+        AppFooter,
     },
 }
 </script>
