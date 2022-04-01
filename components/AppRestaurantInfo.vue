@@ -24,10 +24,6 @@
                             <p>{{ priceFormatting(menuitem.price) }}</p>
                         </div>
                         <button class="ghost">View Item</button>
-                        <img
-                            :src="'/' + menuitem.img"
-                            style="width: 10px; height: auto"
-                        />
                     </div>
                 </div>
             </div>
