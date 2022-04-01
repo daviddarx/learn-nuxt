@@ -16,7 +16,7 @@
                     v-for="menuitem in store.menu"
                     :key="menuitem.id"
                     class="items"
-                    :style="`background: url(${menuitem.img}) no-repeat center center`"
+                    :style="`background: url(/${menuitem.img}) no-repeat center center`"
                 >
                     <div class="iteminfo">
                         <div>
@@ -24,6 +24,10 @@
                             <p>{{ priceFormatting(menuitem.price) }}</p>
                         </div>
                         <button class="ghost">View Item</button>
+                        <img
+                            :src="'/' + menuitem.img"
+                            style="width: 10px; height: auto"
+                        />
                     </div>
                 </div>
             </div>
