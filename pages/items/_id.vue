@@ -2,13 +2,13 @@
     <main class="container">
         <section
             class="image"
-            :style="`background: url(/${restaurantInfo.img}) no-repeat center center`"
+            :style="`background: url(/${currentItem.img}) no-repeat center center`"
         ></section>
 
         <section class="details">
-            <h1>{{ restaurantInfo.item }}</h1>
+            <h1>{{ currentItem.item }}</h1>
 
-            <h3>Price: ${{ restaurantInfo.price.toFixed(2) }}</h3>
+            <h3>Price: ${{ currentItem.price.toFixed(2) }}</h3>
 
             <div class="quantity">
                 <input v-model="count" type="number" min="1" />
@@ -17,11 +17,11 @@
                 </button>
             </div>
 
-            <fieldset v-if="restaurantInfo.options">
+            <fieldset v-if="currentItem.options">
                 <legend>
                     <h3>Options</h3>
                 </legend>
-                <div v-for="option in restaurantInfo.options" :key="option">
+                <div v-for="option in currentItem.options" :key="option">
                     <input
                         :id="option"
                         v-model="itemOptions"
@@ -33,11 +33,11 @@
                 </div>
             </fieldset>
 
-            <fieldset v-if="restaurantInfo.addOns">
+            <fieldset v-if="currentItem.addOns">
                 <legend>
                     <h3>Add Ons</h3>
                 </legend>
-                <div v-for="addon in restaurantInfo.addOns" :key="addon">
+                <div v-for="addon in currentItem.addOns" :key="addon">
                     <input
                         :id="addon"
                         v-model="itemAddons"
@@ -57,7 +57,7 @@
 
         <section class="options">
             <h3>Description</h3>
-            <p>{{ restaurantInfo.description }}</p>
+            <p>{{ currentItem.description }}</p>
         </section>
     </main>
 </template>
@@ -82,7 +82,7 @@ export default {
     },
     computed: {
         ...mapState(['fooddata']),
-        restaurantInfo() {
+        currentItem() {
             let result
 
             for (let i = 0; i < this.fooddata.length; i++) {
@@ -97,7 +97,7 @@ export default {
             return result
         },
         combinedPrice() {
-            const total = this.count * this.restaurantInfo.price
+            const total = this.count * this.currentItem.price
             return total.toFixed(2)
         },
     },
