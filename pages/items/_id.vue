@@ -10,7 +10,7 @@
 
             <h3>Price: ${{ currentItem.price.toFixed(2) }}</h3>
 
-            <div class="quantity"> 
+            <div class="quantity">
                 <input v-model="count" type="number" min="1" />
                 <button class="primary" @click="addToCart">
                     Add to Cart - ${{ combinedPrice }}
